@@ -29,7 +29,19 @@ Welcome to my `vanilla` [Neovim](https://github.com/neovim/neovim) configuration
 
 - Quickly comment/uncomment.
 - Undo files.
+- File browser.
 - LSP!
+- Blazing fast startup time (of course, it doesn't load any plugins :relieved:)
+
+```shell
+NVIM_APPNAME=nvim-vanilla vim-startuptime -vimpath nvim -count 100
+Extra options: []
+Measured: 100 times
+
+Total Average: 16.576810 msec
+Total Max:     50.683000 msec
+Total Min:     8.702000 msec
+```
 
 ## 2. Installation
 
@@ -125,3 +137,9 @@ Read more about LSP in the [official documentation](https://neovim.io/doc/user/l
 
 > [!Note]
 > Work in progress
+
+Hmm, you can figure out with the `:map` command. There are also other variants.
+
+- `:nmap` for normal mode mappings
+- `:vmap` for visual mode mappings
+- `:imap` for insert mode mappings
