@@ -5,6 +5,7 @@
 </div>
 
 Table of contents:
+
 - [1. Introduction](#1-introduction)
 - [2. Installation](#2-installation)
 - [3. LSP](#3-lsp)
@@ -14,8 +15,7 @@ Table of contents:
 
 Welcome to my `vanilla` [Neovim](https://github.com/neovim/neovim) configuration. This is my attempt to create a functionality and minimal configuration without any extra plugins, which is inspired by [this talk](https://youtu.be/XA2WjJbmmoM).
 
-> [!Important]
-> **Goals**:
+> [!Important] > **Goals**:
 >
 > - Increase Neovim/Vim understanding.
 > - Offer powerful options.
@@ -65,7 +65,7 @@ mv ~/.config/nvim ~/.config/nvim.bak
 
 > [!NOTE]
 > Your fork's url will be something like this:
-> `https://github.com/<your_github_username>/neovim-config.git`
+> `https://github.com/<your_github_username>/vanilla-neovim.git`
 
 - Get your configuration:
 
