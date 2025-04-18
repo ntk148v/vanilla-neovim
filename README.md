@@ -15,7 +15,8 @@ Table of contents:
 
 Welcome to my `vanilla` [Neovim](https://github.com/neovim/neovim) configuration. This is my attempt to create a functionality and minimal configuration without any extra plugins, which is inspired by [this talk](https://youtu.be/XA2WjJbmmoM).
 
-> [!Important] > **Goals**:
+> [!Important]
+> **Goals**:
 >
 > - Increase Neovim/Vim understanding.
 > - Offer powerful options.
