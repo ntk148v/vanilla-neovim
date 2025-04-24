@@ -1,1 +1,1 @@
-vim.cmd.colorscheme("shine")
+vim.cmd.colorscheme "shine"

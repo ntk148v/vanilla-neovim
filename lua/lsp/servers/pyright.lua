@@ -1,11 +1,11 @@
-vim.lsp.enable("pyright")
+vim.lsp.enable "pyright"
 vim.lsp.config("pyright", {
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-      },
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+            },
+        },
     },
-  },
 })
