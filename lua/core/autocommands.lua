@@ -40,3 +40,16 @@ api.nvim_create_autocmd("LspAttach", {
         if client.supports_method "textDocument/formatting" then buffer_autoformat(event.buf) end
     end,
 })
+
+local statusline_group = api.nvim_create_augroup("Statusline", { clear = true })
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+    pattern = "*",
+    group = statusline_group,
+    command = "setlocal statusline=%!v:lua.statusline_active()",
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+    pattern = "*",
+    group = statusline_group,
+    command = "setlocal statusline=%!v:lua.statusline_inactive()",
+})
