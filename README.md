@@ -44,6 +44,10 @@ Total Max:     50.683000 msec
 Total Min:     8.702000 msec
 ```
 
+|                                                                                |                                                                                |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| <img src="screenshots/nvim-vanilla1.png" style="border-radius:1%"/> | <img src="screenshots/nvim-vanilla2.png" style="border-radius:1%"/> |
+
 ## 2. Installation
 
 - Requirements:
@@ -122,6 +126,7 @@ go install golang.org/x/tools/gopls@latest
 npm install -g yaml-language-server
 npm install -g pyright
 npm install -g vscode-langservers-extracted
+# With luals you can install by following the documentation: https://github.com/luals/lua-language-server/wiki/Getting-Started
 ```
 
 2. Restart Nvim, or use ":edit" to reload the buffer.
