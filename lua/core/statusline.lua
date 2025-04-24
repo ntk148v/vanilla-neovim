@@ -63,7 +63,7 @@ local function filename()
     return fname .. " "
 end
 
-local function filetype() return string.format(" %s ", vim.bo.filetype):upper() end
+local function current_filetype() return string.format(" %s ", vim.bo.filetype):upper() end
 
 local function lineinfo()
     if vim.bo.filetype == "alpha" then return "" end
@@ -105,11 +105,7 @@ local function lsp()
     end
 
     local lsp_name = ""
-    if next(client_names) ~= nil then
-        lsp_name = " %#StatusLineLsp# " .. table.concat(client_names, ", ")
-    else
-        lsp_name = ""
-    end
+    if next(client_names) ~= nil then lsp_name = " %#StatusLineLsp# " .. table.concat(client_names, ", ") end
 
     return errors .. warnings .. hints .. info .. lsp_name .. " %#Normal#"
 end
@@ -125,11 +121,9 @@ function _G.statusline_active()
         "%#Normal#",
         "%=%#StatusLineExtra#",
         lsp(),
-        filetype(),
+        current_filetype(),
         lineinfo(),
     }
 end
 
 function _G.statusline_inactive() return " %F" end
-
-return M
