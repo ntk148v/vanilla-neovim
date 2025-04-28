@@ -34,3 +34,15 @@ map("n", "tt", function()
     local height = math.floor(vim.o.lines / 2)
     cmd("belowright split | resize " .. height .. " | terminal")
 end, { noremap = true, silent = true })
+
+-- Reload
+function _G.reload_config()
+    for name, _ in pairs(package.loaded) do
+        if name:match "^me" then package.loaded[name] = nil end
+    end
+
+    dofile(vim.env.MYVIMRC)
+    vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
+end
+
+map("n", "rr", _G.reload_config, { desc = "Reload configuration without restart nvim" })
