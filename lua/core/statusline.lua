@@ -50,19 +50,6 @@ local function update_mode_colors()
     return mode_color
 end
 
-local function filepath()
-    local fpath = fn.fnamemodify(fn.expand "%", ":~:.:h")
-    if fpath == "" or fpath == "." then return " " end
-
-    return string.format(" %%<%s/", fpath)
-end
-
-local function filename()
-    local fname = fn.expand "%:t"
-    if fname == "" then return "" end
-    return fname .. " "
-end
-
 local function current_filetype() return string.format(" %s ", vim.bo.filetype):upper() end
 
 local function lineinfo()
@@ -116,8 +103,6 @@ function _G.statusline_active()
         update_mode_colors(),
         mode(),
         "%#Normal# ",
-        filepath(),
-        filename(),
         "%#Normal#",
         "%=%#StatusLineExtra#",
         lsp(),

@@ -59,6 +59,27 @@ opt.listchars = {
     nbsp = "×",
 }
 
+opt.showtabline = 2
+opt.tabline = "%!v:lua.Tabline()"
+
+function _G.Tabline()
+    local s = ""
+    for i = 1, vim.fn.bufnr "$" do
+        if vim.fn.bufexists(i) == 1 and vim.fn.buflisted(i) == 1 then
+            local bufname = vim.fn.fnamemodify(vim.fn.bufname(i), ":t")
+            if bufname == "" then bufname = "[No Name]" end
+            if i == vim.fn.bufnr() then
+                s = s .. "%#TabLineSel#"
+            else
+                s = s .. "%#TabLine#"
+            end
+            s = s .. " " .. i .. ": " .. bufname .. " "
+        end
+    end
+    s = s .. "%#TabLineFill#"
+    return s
+end
+
 -- Hide cmd line
 opt.cmdheight = 0 -- more space in the neovim command line for displaying messages
 
