@@ -50,10 +50,14 @@ local function update_mode_colors()
     return mode_color
 end
 
-local function current_filetype() return string.format(" %s ", vim.bo.filetype):upper() end
+local function current_filetype()
+    return string.format(" %s ", vim.bo.filetype):upper()
+end
 
 local function lineinfo()
-    if vim.bo.filetype == "alpha" then return "" end
+    if vim.bo.filetype == "alpha" then
+        return ""
+    end
     return " %P %l:%c "
 end
 
@@ -75,14 +79,22 @@ local function lsp()
     local hints = ""
     local info = ""
 
-    if count["errors"] ~= 0 then errors = " %#LspDiagnosticsSignError# " .. count["errors"] end
-    if count["warnings"] ~= 0 then warnings = " %#LspDiagnosticsSignWarning# " .. count["warnings"] end
-    if count["hints"] ~= 0 then hints = " %#LspDiagnosticsSignHint# " .. count["hints"] end
-    if count["info"] ~= 0 then info = " %#LspDiagnosticsSignInformation# " .. count["info"] end
+    if count["errors"] ~= 0 then
+        errors = " %#LspDiagnosticsSignError# " .. count["errors"]
+    end
+    if count["warnings"] ~= 0 then
+        warnings = " %#LspDiagnosticsSignWarning# " .. count["warnings"]
+    end
+    if count["hints"] ~= 0 then
+        hints = " %#LspDiagnosticsSignHint# " .. count["hints"]
+    end
+    if count["info"] ~= 0 then
+        info = " %#LspDiagnosticsSignInformation# " .. count["info"]
+    end
 
     -- Only include LSP clients that support the current buffer's filetype
     local filetype = vim.bo.filetype
-    local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
+    local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
     local client_names = {}
 
     for _, client in ipairs(buf_clients) do
@@ -92,13 +104,15 @@ local function lsp()
     end
 
     local lsp_name = ""
-    if next(client_names) ~= nil then lsp_name = " %#StatusLineLsp# " .. table.concat(client_names, ", ") end
+    if next(client_names) ~= nil then
+        lsp_name = " %#StatusLineLsp# " .. table.concat(client_names, ", ")
+    end
 
     return errors .. warnings .. hints .. info .. lsp_name .. " %#Normal#"
 end
 
 function _G.statusline_active()
-    return table.concat {
+    return table.concat({
         "%#Statusline#",
         update_mode_colors(),
         mode(),
@@ -108,7 +122,9 @@ function _G.statusline_active()
         lsp(),
         current_filetype(),
         lineinfo(),
-    }
+    })
 end
 
-function _G.statusline_inactive() return " %F" end
+function _G.statusline_inactive()
+    return " %F"
+end

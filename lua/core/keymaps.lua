@@ -2,6 +2,26 @@
 local map = vim.keymap.set
 local cmd = vim.cmd
 
+-- Move around splits
+map("n", "<leader>wh", "<C-w>h", { desc = "Switch [W]indow left" })
+map("n", "<leader>wj", "<C-w>j", { desc = "Switch [W]indow right" })
+map("n", "<leader>wk", "<C-w>k", { desc = "Switch [W]indow up" })
+map("n", "<leader>wl", "<C-w>l", { desc = "Switch [W]indow down" })
+
+-- Reload
+function _G.reload_config()
+    for name, _ in pairs(package.loaded) do
+        if name:match("^me") then
+            package.loaded[name] = nil
+        end
+    end
+
+    dofile(vim.env.MYVIMRC)
+    vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
+end
+
+map("n", "rr", _G.reload_config, { desc = "Reload configuration without restart nvim" })
+
 -- NOW WE CAN:
 -- - :edit a folder to open a file browser
 -- - <CR>/v/t to open in an h-split/v-split/tab
@@ -35,14 +55,9 @@ map("n", "tt", function()
     cmd("belowright split | resize " .. height .. " | terminal")
 end, { noremap = true, silent = true })
 
--- Reload
-function _G.reload_config()
-    for name, _ in pairs(package.loaded) do
-        if name:match "^me" then package.loaded[name] = nil end
-    end
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-    dofile(vim.env.MYVIMRC)
-    vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
-end
-
-map("n", "rr", _G.reload_config, { desc = "Reload configuration without restart nvim" })
+-- Diagnostic keymaps
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })

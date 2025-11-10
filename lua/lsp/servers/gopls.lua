@@ -1,4 +1,4 @@
-vim.lsp.enable "gopls"
+vim.lsp.enable("gopls")
 vim.lsp.config("gopls", {
     cmd = { "gopls" },
     settings = {

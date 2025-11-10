@@ -1,4 +1,4 @@
-vim.lsp.enable "yamlls"
+vim.lsp.enable("yamlls")
 vim.lsp.config("yamlls", {
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },

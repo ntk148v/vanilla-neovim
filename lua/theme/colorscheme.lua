@@ -1,1 +1,1 @@
-vim.cmd.colorscheme "lunaperche"
+vim.cmd.colorscheme("lunaperche")

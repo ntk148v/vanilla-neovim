@@ -1,4 +1,4 @@
-vim.lsp.enable "pyright"
+vim.lsp.enable("pyright")
 vim.lsp.config("pyright", {
     settings = {
         python = {
