@@ -153,7 +153,9 @@ o.ttimeoutlen = 10
 o.updatetime = 100 -- signify default updatetime 4000ms is not good for async update
 
 -- theme
-o.termguicolors = true -- enable 24-bit RGB colors
+-- disable 24-bit RGB colors to use terminal colors for neovim
+-- if you want to set other colorscheme, feel free to enable it
+vim.opt.termguicolors = false
 
 -- persistent undo
 -- Don"t forget to create folder $HOME/.local/share/nvim/undo
